@@ -71,6 +71,7 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         }else{
             dao.salvar(personagem);
         }
+        finish();
     }
 
     private void preencherPersonagem() {
@@ -83,10 +84,10 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
       personagem.setNascimento(nascimento);
     }
 
-    @SuppressLint("WrongViewCast")
     private void inicializeCampos() {
         campoNome = findViewById(R.id.editTextName);
         campoAltura = findViewById(R.id.editTextAltura);
         campoNascimento = findViewById(R.id.editTextNascimento);
     }
+
 }

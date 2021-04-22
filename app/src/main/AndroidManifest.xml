@@ -9,17 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListaAplicativo">
-        <activity android:name=".ui.activities.FormularioPersonagemActivity">
+       <activity android:name=".ui.activities.FormularioPersonagemActivity"/>
+        <activity android:name=".ui.activities.ListaPersonagemActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ui.activities.ListaPersonagem">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

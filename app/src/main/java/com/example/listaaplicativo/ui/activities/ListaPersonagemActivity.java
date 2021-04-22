@@ -25,7 +25,7 @@ import java.util.List;
 
 import static com.example.listaaplicativo.ui.activities.ConstantesActivities.CHAVE_PERSONAGEM;
 
-public class ListaPersonagem extends AppCompatActivity {
+public class ListaPersonagemActivity extends AppCompatActivity {
 
     public static final String  TITULO_APPBAR = "LISTA DE PERSONAGENS";
     private final PersonagemDAO dao = new PersonagemDAO();

@@ -25,7 +25,7 @@ public class PersonagemDAO {
         }
     }
 
-    private Personagem buscaPersonagemId(Personagem personagem)
+    public  Personagem buscaPersonagemId(Personagem personagem)
     {
         for (Personagem p: personagens) {
             if(p.getId()==personagem.getId()){

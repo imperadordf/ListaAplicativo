@@ -7,27 +7,34 @@
     android:orientation="vertical"
     tools:context=".ui.activities.FormularioPersonagemActivity">
 
-    <TextView
+    <EditText
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nome" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextAltura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Altura" />
 
-    <TextView
+    <EditText
         android:id="@+id/editTextNascimento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nascimento" />
 
     <Button
         android:id="@+id/botaoEnviar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Salvar" />
+
 </LinearLayout>
