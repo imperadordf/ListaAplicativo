@@ -64,21 +64,21 @@ public class ListaPersonagemActivity extends AppCompatActivity {
             }
         });
     }
-
+//Abre o Formulario Salvar e referenciando o
     private void abreFormularioSalva() {
         startActivity(new Intent(this, FormularioPersonagemActivity.class));
     }
-
+//Recarrega o os personagem
     protected  void onResume(){
         super.onResume();
         atualizaPersonagem();
     }
-
+//Atualiza o Personagem
     private void atualizaPersonagem() {
         adapter.clear();
         adapter.addAll(dao.todos());
     }
-
+  //Remove o Personagem
     private void remove(Personagem personagem){
         dao.remove(personagem);
         adapter.remove(personagem);
@@ -89,9 +89,10 @@ public class ListaPersonagemActivity extends AppCompatActivity {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.activity_lista_personagem_menu,menu);
     }
-
+//O menu para Remover um Personagem
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
+        //Pegando o Item
         int itemId = item.getItemId();
         if(itemId==R.id.activity_lista_personagem_menu_remover){
              new AlertDialog.Builder(this)
@@ -100,25 +101,26 @@ public class ListaPersonagemActivity extends AppCompatActivity {
                      .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                          @Override
                          public void onClick(DialogInterface dialog, int which) {
+                             //Metodo ao clickar em Remove e escolhe Sim
                           AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
                           Personagem personagemEscolhido = adapter.getItem(menuInfo.position);
                           remove(personagemEscolhido);
                          }
                      })
-                     .setNegativeButton("Não",null)
+                     .setNegativeButton("Não",null) //"não", ele apenas faz nada
                      .show();
         }
 
         return super.onContextItemSelected(item);
     }
-
+//Configura a lista
     private void configuraLista() {
         ListView listaDePersonagens = findViewById(R.id.activity_main_lista_personagem);
         listaDePersonagens(listaDePersonagens);
         ConfiguraItemPorClique(listaDePersonagens);
         registerForContextMenu(listaDePersonagens);
     }
-
+ //
     private void ConfiguraItemPorClique(ListView listaDePersonagens) {
         listaDePersonagens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -128,14 +130,14 @@ public class ListaPersonagemActivity extends AppCompatActivity {
             }
         });
     }
-
+//Abre o Formulario para o Personagem poder editar, e vai para o Layout de Formulario levando as informações desse Personagem que vai editar
     private void abreFormularioModoEditar(Personagem personagem) {
         Intent vaiParaFormulario = new Intent(this,FormularioPersonagemActivity.class);
         vaiParaFormulario.putExtra(CHAVE_PERSONAGEM,  personagem);
         startActivity(vaiParaFormulario);
     }
 
-
+//criar um listView da lista do Personagem, dando cada Personagem para lista
     private  void listaDePersonagens(ListView listaDePersonagens){
         adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1);
         listaDePersonagens.setAdapter(adapter);

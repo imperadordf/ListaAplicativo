@@ -130,10 +130,12 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoAltura = findViewById(R.id.editTextAltura);
         campoNascimento = findViewById(R.id.editTextNascimento);
 
+        //Formação da Altura para ficar certinho, até a altura de 9 metros, mais exatamente 9,99
         SimpleMaskFormatter smfAltura = new SimpleMaskFormatter("N,NN");
         MaskTextWatcher mtwAltura = new MaskTextWatcher(campoAltura,smfAltura);
         campoAltura.addTextChangedListener(mtwAltura);
 
+        //Formação de Data, dia/Mes/Ano
         SimpleMaskFormatter smfNascimento = new SimpleMaskFormatter("NN/NN/NNNN");
         MaskTextWatcher mtwNascimento = new MaskTextWatcher(campoNascimento,smfNascimento);
         campoNascimento.addTextChangedListener(mtwNascimento);
