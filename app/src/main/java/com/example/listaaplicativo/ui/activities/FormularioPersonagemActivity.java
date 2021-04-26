@@ -1,10 +1,12 @@
 package com.example.listaaplicativo.ui.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +14,8 @@ import android.widget.EditText;
 import com.example.listaaplicativo.R;
 import com.example.listaaplicativo.dao.PersonagemDAO;
 import com.example.listaaplicativo.model.Personagem;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import static com.example.listaaplicativo.ui.activities.ConstantesActivities.CHAVE_PERSONAGEM;
 
@@ -29,6 +33,22 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
     private final PersonagemDAO dao = new PersonagemDAO();
     //Uma classe Personagem, que vai ser criado ou editado
     private Personagem personagem;
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_formulario_personagem_menul_salvar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if(itemId==R.id.activity_formulario_personagem_salvar){
+            finalizaFormulario();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     //Seria o Start do Android Studio a onde tudo começa, o Main que seria a criação de tudo
     @Override
@@ -75,12 +95,12 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
             @Override
             //Se for Clickando ele chama o FinalizaFormulario
             public void onClick(View v) {
-                FinalizaFormulario();
+                finalizaFormulario();
             }
         });
     }
    //
-    private void FinalizaFormulario() {
+    private void finalizaFormulario() {
         //Chamo o Metodo que seta os valores do meu Personagem
         preencherPersonagem();
         //Verifico se estou editando ou Criando um personagem
@@ -109,6 +129,15 @@ public class FormularioPersonagemActivity extends AppCompatActivity {
         campoNome = findViewById(R.id.editTextName);
         campoAltura = findViewById(R.id.editTextAltura);
         campoNascimento = findViewById(R.id.editTextNascimento);
+
+        SimpleMaskFormatter smfAltura = new SimpleMaskFormatter("N,NN");
+        MaskTextWatcher mtwAltura = new MaskTextWatcher(campoAltura,smfAltura);
+        campoAltura.addTextChangedListener(mtwAltura);
+
+        SimpleMaskFormatter smfNascimento = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher mtwNascimento = new MaskTextWatcher(campoNascimento,smfNascimento);
+        campoNascimento.addTextChangedListener(mtwNascimento);
+
     }
 
 }
